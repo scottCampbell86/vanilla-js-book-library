@@ -1,4 +1,7 @@
-const qs = (input) => document.querySelector(input)
+//helpers
+const qs = (input) => document.querySelector(input);
+const createE = (input) => document.createElement(input);
+
 //Book constructor
 function Book(title, author, isbn) {
   this.title = title;
@@ -11,7 +14,13 @@ function UI() {};
 
 //UI class method to add book to list
 UI.prototype.addBookToList = book => {
-  const line = qs('#book-list');
+  //create var for book list
+  const list = qs('#book-list');
+
+  //create tr element
+  const row = createE('tr');
+
+  console.log(row)
 }
 
 

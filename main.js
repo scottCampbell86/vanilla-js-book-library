@@ -1,3 +1,4 @@
+const qs = (input) => document.querySelector(input)
 //Book constructor
 function Book(title, author, isbn) {
   this.title = title;
@@ -8,16 +9,22 @@ function Book(title, author, isbn) {
 //UI constructor
 function UI() {};
 
-UI.prototype.addBookToList = book => console.log(book)
+//UI class method to add book to list
+UI.prototype.addBookToList = book => {
+  const line = qs('#book-list');
+}
+
+
+
 //Event Listeners
 
 document.getElementById('book-form').addEventListener('submit', (e) => {
   e.preventDefault();
 
   //grab form values
-  const title = document.getElementById('title').value;
-        author = document.getElementById('author').value;
-        isbn = document.getElementById('isbn').value;
+  const title = qs('#title').value;
+        author = qs('#author').value;
+        isbn = qs('#isbn').value;
 
   console.log(title, author, isbn);
 

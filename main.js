@@ -32,9 +32,7 @@ UI.prototype.showAlert = (message, className) => {
 
 //delete book
 
-UI.prototype.deleteBook = target => {
-  if (target.className === 'delete') target.parentElement.parentElement.remove();
-}
+UI.prototype.deleteBook = target => target.className === 'delete' && target.parentElement.parentElement.remove();
 
 //UI method to clear input fields
 UI.prototype.clearFields = () => {

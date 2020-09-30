@@ -27,8 +27,15 @@ UI.prototype.showAlert = (message, className) => {
 
   setTimeout(() => {
     qs('.alert').remove();
-  }, 2500);
+  }, 2250);
 }
+
+//delete book
+
+UI.prototype.deleteBook = target => {
+  if (target.className === 'delete') target.parentElement.parentElement.remove();
+}
+
 //UI method to clear input fields
 UI.prototype.clearFields = () => {
   qs('#title').value = '';
@@ -82,6 +89,16 @@ document.getElementById('book-form').addEventListener('submit', (e) => {
     //clear field
     ui.clearFields()
   }
+})
+
+qs('#book-list').addEventListener('click', (e) => {
+  e.preventDefault();
+
+  console.log('heard');
+
+  const ui = new UI();
+  ui.deleteBook(e.target);
+  ui.showAlert('Book removed', 'success');
 
 })
 

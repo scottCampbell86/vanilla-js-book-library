@@ -1,4 +1,4 @@
-//cheater helpers
+//Cheater helpers
 const qs = (input) => document.querySelector(input);
 const createE = (input) => document.createElement(input);
 
@@ -57,27 +57,26 @@ class UI {
 }
 
 //Event Listeners
-
 document.getElementById('book-form').addEventListener('submit', (e) => {
   e.preventDefault();
 
-  //grab input values from form
+    //grab input values from form
   const title = qs('#title').value;
   const author = qs('#author').value;
   const isbn = qs('#isbn').value;
 
-  //instantiate classes
+    //instantiate classes
   const book = new Book(title, author, isbn);
   const ui = new UI();
 
-  //validate user's input 
+    //validate user's input 
   if (title === '' || author === '' || isbn === '') {
     ui.showAlert('Please fill in all fields', 'error');
     ui.clearFields();
     return;
   }
   
-    //Add book to list
+    //add book to list
   ui.addBookToList(book);
     //alert success
   ui.showAlert('Book added', 'success')

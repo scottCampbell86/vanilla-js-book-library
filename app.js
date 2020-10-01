@@ -58,7 +58,8 @@ class UI {
 
 //Local Storage Class
 class Storage {
-  
+
+    //render book to DOM
   static displayBooks() {
     const books = Storage.getBooks();
 
@@ -69,15 +70,17 @@ class Storage {
     })
   };
 
+    //get books from local storage
   static getBooks() {
     let books;
 
     if (localStorage.getItem('books') === null) books = [];
-    else books = JSON.parse(localStorage.getItems('books'));
+    else books = JSON.parse(localStorage.getItem('books'));
 
     return books;
   };
 
+    //add a book to local storage
   static addBook(book) {
     const books = Storage.getBooks();
 
@@ -86,8 +89,13 @@ class Storage {
     localStorage.setItem('books', JSON.stringify(books));
   };
 
-  static removeBook() {
-    
+    //delete book from local storage
+  static removeBook(isbn) {
+    let books = Storage.getBooks();
+
+    books = books.filter(book => book.isbn !== isbn);
+
+    localStorage.setItem('books', JSON.stringify(books));
   };
 }
 
@@ -134,5 +142,10 @@ qs('#book-list').addEventListener('click', (e) => {
 
   const ui = new UI();
   ui.deleteBook(e.target);
+  
+    //delete from local storage
+  Storage.removeBook(e.target.parentElement.previousElementSibling.textContent);
+
   ui.showAlert('Book removed', 'success');
+
 })

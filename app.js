@@ -58,8 +58,9 @@ class UI {
 
 //Local Storage Class
 class Storage {
+  
   static displayBooks() {
-    const books = Store.getBooks();
+    const books = Storage.getBooks();
 
     books.forEach(book => {
       const ui = new UI();
